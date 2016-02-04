@@ -445,7 +445,7 @@ Lt    Letter, Titlecase
 
 """
     #: The validator's error code.
-    code = u"invalid_letter_count"
+    code = u"invalid_uc_letter_count"
 
     def get_error_message(self):
         """
@@ -481,7 +481,7 @@ Ll    Letter, Lowercase
 
 """
     #: The validator's error code.
-    code = u"invalid_letter_count"
+    code = u"invalid_lc_letter_count"
 
     def get_error_message(self):
         """
@@ -631,6 +631,60 @@ Returns this validator's error message.
         return settings.PASSWORD_MIN_SYMBOLS
 
 
+class CategoryCountValidator(object):
+    """
+Counts the occurrences of characters of a
+:py:func:`unicodedata.category` and raises a
+:class:`~django.core.exceptions.ValidationError` if the count
+is less than :py:func:`~CategoryCountValidator.get_min_count`
+ in the minimum number of categories.
+"""
+
+    #: The validator's error code.
+    code = u"invalid_category_count"
+
+    def __call__(self, value):
+        if not self.get_min_count() or not self.get_min_categories():
+            return
+        counters = [0] * len(settings.PASSWORD_CATEGORIES)
+        for character in force_text(value):
+            category = unicodedata.category(character)
+            i = 0
+            for group in settings.PASSWORD_CATEGORIES:
+                if category in group:
+                    counters[i] += 1
+                i += 1
+
+        num_valid_groups = 0
+        for counter in counters:
+            if counter >= self.get_min_count():
+                num_valid_groups += 1
+
+        if num_valid_groups < self.get_min_categories():
+            raise ValidationError(self.get_error_message(), code=self.code)
+
+    def get_error_message(self):
+        """
+Returns this validator's error message.
+"""
+        msg = ungettext("The new password must contain %d or more characters from %d category.",
+                        "The new password must contain %d or more characters from %d categories.",
+                        self.get_min_categories()) % (self.get_min_count(), self.get_min_categories())
+        return msg
+
+    def get_min_count(self):
+        """
+:returns: :py:attr:`password_policies.conf.Settings.PASSWORD_MIN_EACH_CATEGORY`
+"""
+        return settings.PASSWORD_MIN_EACH_CATEGORY
+
+    def get_min_categories(self):
+        """
+:returns: :py:attr:`password_policies.conf.Settings.PASSWORD_MIN_CATEGORIES`
+"""
+        return settings.PASSWORD_MIN_CATEGORIES
+
+
 validate_bidirectional = BidirectionalValidator()
 validate_common_sequences = CommonSequenceValidator(settings.PASSWORD_COMMON_SEQUENCES)
 validate_consecutive_count = ConsecutiveCountValidator()
@@ -644,3 +698,4 @@ validate_lc_letter_count = LowercaseLetterCountValidator()
 validate_not_email = NotEmailValidator()
 validate_number_count = NumberCountValidator()
 validate_symbol_count = SymbolCountValidator()
+validate_category_count = CategoryCountValidator()

@@ -67,6 +67,7 @@ class PasswordPoliciesFieldTest(BaseTest):
                                        u'The new password must contain 1 or more uppercase letters.',
                                        u'The new password must contain 1 or more numbers.',
                                        u'The new password must contain 1 or more symbols.',
+                                       u'The new password must contain 1 or more characters from 2 categories.',
                                        u'The new password is not varied enough.']}
                                )
 
@@ -81,6 +82,7 @@ class PasswordPoliciesFieldTest(BaseTest):
                                {'Chad+pher9k': 'Chad+pher9k'},
                                {'EUADEHI3E%': [u'The new password must contain 1 or more lowercase letters.']}
                                )
+
 
 class PasswordPoliciesFormTest(BaseTest):
 
