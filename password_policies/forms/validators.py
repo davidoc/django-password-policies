@@ -251,7 +251,7 @@ Validates a given password using Python bindings for cracklib.
             crack.FascistCheck(value)
         except ValueError as reason:
             reason = _(str(reason))
-            message = _("Please choose a different password, %s." % reason)
+            message = _("Please choose a different password, %s.") % reason
             raise ValidationError(message, code=self.code)
 
     def __init__(self, diff_ok=0, dig_credit=0, low_credit=0,
