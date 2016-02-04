@@ -414,7 +414,7 @@ Nl    Number, Letter
         """
 Returns this validator's error message.
 """
-        msg = ungettext("The new password must contain %d or more letter.",
+        msg = ungettext("The new password must contain %d or more letters.",
                         "The new password must contain %d or more letters.",
                         self.get_min_count()) % self.get_min_count()
         return msg
@@ -451,7 +451,7 @@ Lt    Letter, Titlecase
         """
 Returns this validator's error message.
 """
-        msg = ungettext("The new password must contain %d or more uppercase letter.",
+        msg = ungettext("The new password must contain %d or more uppercase letters.",
                         "The new password must contain %d or more uppercase letters.",
                         self.get_min_count()) % self.get_min_count()
         return msg
@@ -487,7 +487,7 @@ Ll    Letter, Lowercase
         """
 Returns this validator's error message.
 """
-        msg = ungettext("The new password must contain %d or more lowercase letter.",
+        msg = ungettext("The new password must contain %d or more lowercase letters.",
                         "The new password must contain %d or more lowercase letters.",
                         self.get_min_count()) % self.get_min_count()
         return msg
@@ -566,7 +566,7 @@ No    Number, Other
         """
 Returns this validator's error message.
 """
-        msg = ungettext("The new password must contain %d or more number.",
+        msg = ungettext("The new password must contain %d or more numbers.",
                         "The new password must contain %d or more numbers.",
                         self.get_min_count()) % self.get_min_count()
         return msg
@@ -619,7 +619,7 @@ Zl    Separator, Line
         """
 Returns this validator's error message.
 """
-        msg = ungettext("The new password must contain %d or more symbol.",
+        msg = ungettext("The new password must contain %d or more symbols.",
                         "The new password must contain %d or more symbols.",
                         self.get_min_count()) % self.get_min_count()
         return msg
