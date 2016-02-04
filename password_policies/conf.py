@@ -107,6 +107,16 @@ Used by the :validator:`DictionaryValidator`.
     #:
     #: Used by :validator:`LetterCountValidator`.
     PASSWORD_MIN_LETTERS = 3
+    #: Specifies the minimum amount of required uppercase
+    #: letters in a password.
+    #:
+    #: Used by :validator:`UppercaseLetterCountValidator`.
+    PASSWORD_MIN_UC_LETTERS = 1
+    #: Specifies the minimum amount of required lowercase
+    #: letters in a password.
+    #:
+    #: Used by :validator:`LowercaseLetterCountValidator`.
+    PASSWORD_MIN_LC_LETTERS = 1
     #: Specifies the minimum amount of required numbers in a
     #: password.
     #:
