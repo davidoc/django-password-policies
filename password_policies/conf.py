@@ -107,6 +107,16 @@ Used by the :validator:`DictionaryValidator`.
     #:
     #: Used by :validator:`LetterCountValidator`.
     PASSWORD_MIN_LETTERS = 3
+    #: Specifies the minimum amount of required uppercase
+    #: letters in a password.
+    #:
+    #: Used by :validator:`UppercaseLetterCountValidator`.
+    PASSWORD_MIN_UC_LETTERS = 1
+    #: Specifies the minimum amount of required lowercase
+    #: letters in a password.
+    #:
+    #: Used by :validator:`LowercaseLetterCountValidator`.
+    PASSWORD_MIN_LC_LETTERS = 1
     #: Specifies the minimum amount of required numbers in a
     #: password.
     #:
@@ -117,6 +127,20 @@ Used by the :validator:`DictionaryValidator`.
     #:
     #: Used by :validator:`SymbolCountValidator`.
     PASSWORD_MIN_SYMBOLS = 1
+
+    PASSWORD_CATEGORIES_LETTERS = ['LC', 'Ll', 'Lu', 'Lt', 'Lo', 'Nl']
+    PASSWORD_CATEGORIES_UC_LETTERS = ['Lu', 'Lt']
+    PASSWORD_CATEGORIES_LC_LETTERS = ['Ll']
+    PASSWORD_CATEGORIES_NUMBERS = ['Nd', 'No']
+    PASSWORD_CATEGORIES_SYMBOLS = ['Lm', 'Mc', 'Me', 'Mn', 'Pc', 'Pd', 'Pe', 'Pf',
+                                   'Pi', 'Po', 'Ps', 'Sc', 'Sk', 'Sm', 'So', 'Zl']
+
+    PASSWORD_CATEGORIES = [PASSWORD_CATEGORIES_UC_LETTERS, PASSWORD_CATEGORIES_LC_LETTERS,
+                           PASSWORD_CATEGORIES_NUMBERS, PASSWORD_CATEGORIES_SYMBOLS]
+    PASSWORD_MIN_CATEGORIES = 2
+
+    PASSWORD_MIN_EACH_CATEGORY = 1
+
     #: Determines wether to validate passwords using the
     #: :validator:`CracklibValidator`.
     PASSWORD_USE_CRACKLIB = False

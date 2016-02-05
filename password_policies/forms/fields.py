@@ -6,8 +6,11 @@ from password_policies.forms.validators import validate_cracklib
 from password_policies.forms.validators import validate_dictionary_words
 from password_policies.forms.validators import validate_entropy
 from password_policies.forms.validators import validate_letter_count
+from password_policies.forms.validators import validate_uc_letter_count
+from password_policies.forms.validators import validate_lc_letter_count
 from password_policies.forms.validators import validate_number_count
 from password_policies.forms.validators import validate_symbol_count
+from password_policies.forms.validators import validate_category_count
 from password_policies.forms.validators import validate_not_email
 
 
@@ -20,8 +23,11 @@ A form field that validates a password using :ref:`api-validators`.
                           validate_cracklib,
                           validate_dictionary_words,
                           validate_letter_count,
+                          validate_uc_letter_count,
+                          validate_lc_letter_count,
                           validate_number_count,
                           validate_symbol_count,
+                          validate_category_count,
                           validate_entropy,
                           validate_not_email]
 
